@@ -1,19 +1,11 @@
-# 2026-04-03-project-documentation-completion.md
+# Log: 2026-04-03 - Project Documentation Completion
 
-## Technical Decisions (ADR style)
-- **Unified Documentation**: Created a centralized `README.md` that serves as the entry point for the project, synthesizing information from various documentation sources in the Obsidian Vault (`Rules`, `Docs`, `Context`).
-- **Standardized Setup**: Documented both local and Docker-based deployment workflows using the existing `Makefile` to ensure consistency and ease of use for developers.
-- **Structural Transparency**: Included a directory tree structure in the README to explicitly show the ADR (Action-Domain-Responder) architecture, making it easier for new contributors to understand the codebase layout.
-- **Badge-Driven Presentation**: Used standard badges (PHP version, License) to provide immediate technical context at a glance.
+## Technical Decisions Made (ADR Style)
+- **Clarification**: Standardized the Docker setup instructions to reflect the automated migration process triggered by `make docker-up`.
+- **User Communication**: Added a clear disclaimer about external asset loading (Wikimedia Commons) to manage user expectations regarding image visibility in certain geographic regions (e.g., Russia) where connectivity interruptions are common.
 
 ## Modified Files
-- `README.md` (NEW)
-- `.obsidian_vault/Current_Task.md` (UPDATED)
+- `README.md`
 
 ## Potential Technical Debt or Future Optimizations
-- **Auto-updating Docs**: Consider using automated tools like `phpdoc` or similar to generate technical documentation directly from the codebase in the future.
-- **CI/CD Visibility**: As the project grows, adding a CI/CD pipeline section to the README would be beneficial once automated tests are implemented.
-- **Multi-language Support**: If expanding to international markets, the README could be translated into other languages.
-
----
-Per Rule [GEMINI.md], this log records the completion of Phase 12 (Deploy/Documentation).
+- **Asset Localizing**: In the future, we might consider a feature to download external images to a local `public/uploads` directory during the seeding process (using `curl` or `file_get_contents` + `base64`) to ensure 100% offline/local visibility and bypass region-specific network blocks.

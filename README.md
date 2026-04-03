@@ -90,12 +90,20 @@ A high-performance, lightweight blog engine built with pure PHP 8.1+ and Smarty.
    ```bash
    make docker-up
    ```
-2. **Run Migrations & Seed**:
+2. **Seed Data**:
    ```bash
-   make migrate
    make docker-seed
    ```
-   The application will be available at `http://localhost:8080`.
+   > [!NOTE]
+   > `make docker-up` automatically handles database migrations. The application will be available at `http://localhost:8080`.
+
+---
+
+## 🎨 Assets & Connectivity
+
+> [!IMPORTANT]
+> **External Image Links**: This project uses stable external links (e.g., Wikimedia Commons) for article images to keep the repository lightweight. 
+> Please note that in some regions, such as **Russia**, these external assets may not load correctly due to local connection restrictions on certain global media hosts.
 
 ---
 
