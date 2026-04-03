@@ -1,0 +1,30 @@
+# Infrastructure & Environment
+.env
+*.log
+docker-compose.override.yml
+
+# Obsidian
+.obsidian_vault/Current_Task.md
+
+# PHP Dependencies
+vendor/
+composer.lock
+
+# Smarty Temporary Files
+cache/*
+!cache/.gitkeep
+templates_c/*
+!templates_c/.gitkeep
+
+# Logs
+logs/*.log
+!logs/.gitkeep
+
+# IDE Specific
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# MacOS
+.DS_Store
