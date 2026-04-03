@@ -1,0 +1,29 @@
+{
+    "name": "ivan/blogging",
+    "description": "High-performance blog engine MVP built with pure PHP 8.1+ and Smarty.",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ivan",
+            "email": "ivan@example.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.1",
+        "smarty/smarty": "^4.3",
+        "vlucas/phpdotenv": "^5.5"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    }
+}
