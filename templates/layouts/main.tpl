@@ -23,12 +23,11 @@
 
         <nav>
             <a href="/" class="{if ($activePage|default:"") == 'home'}active{/if}">Home</a>
-            {* Logic for dynamic categories can be added here *}
-            <a href="/category/1">Technology</a>
-            <a href="/category/2">Gastronomy</a>
-            <a href="/category/3">Finance</a>
-            <a href="/category/4">Lifestyle</a>
-            <a href="/category/5">Health</a>
+            {if isset($headerCategories)}
+                {foreach $headerCategories as $cat}
+                    <a href="/category/{$cat->id}" class="{if ($activePage|default:"") == 'category' && ($categoryId|default:0) == $cat->id}active{/if}">{$cat->name}</a>
+                {/foreach}
+            {/if}
         </nav>
 
         <main>

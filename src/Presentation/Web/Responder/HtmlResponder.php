@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Presentation\Web\Responder;
 
+use App\Domain\Repository\CategoryRepositoryInterface;
 use Smarty;
 
 /**
@@ -11,8 +12,10 @@ use Smarty;
  */
 class HtmlResponder implements ResponderInterface
 {
-    public function __construct(private readonly Smarty $smarty)
-    {
+    public function __construct(
+        private readonly Smarty $smarty,
+        private readonly CategoryRepositoryInterface $categoryRepository
+    ) {
     }
 
     /**
@@ -23,6 +26,9 @@ class HtmlResponder implements ResponderInterface
         if (!headers_sent()) {
             header('Content-Type: text/html; charset=UTF-8');
         }
+
+        $headerCategories = $this->categoryRepository->findTopByArticleCount(5);
+        $this->smarty->assign('headerCategories', $headerCategories);
 
         foreach ($data as $key => $value) {
             $this->smarty->assign($key, $value);

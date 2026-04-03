@@ -61,9 +61,13 @@ docker-down:
 	@echo "Stopping Docker containers..."
 	@docker compose down
 
+docker-migrate:
+	@echo "Running migrations inside container..."
+	@docker exec blog_app php bin/migrate.php
+
 docker-seed:
 	@echo "Seeding database inside container..."
-	@docker exec -it blog_app php bin/seed.php
+	@docker exec blog_app php bin/seed.php
 
 docker-bash:
 	@docker exec -it blog_app bash

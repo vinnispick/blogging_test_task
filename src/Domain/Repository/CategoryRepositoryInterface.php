@@ -17,4 +17,9 @@ interface CategoryRepositoryInterface
     public function findAll(): array;
 
     public function findById(int $id): ?Category;
+
+    /**
+     * @return Category[]
+     */
+    public function findTopByArticleCount(int $limit): array;
 }

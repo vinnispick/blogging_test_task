@@ -45,6 +45,28 @@ class PdoCategoryRepository implements CategoryRepositoryInterface
         return $this->mapToEntity($row);
     }
 
+    public function findTopByArticleCount(int $limit): array
+    {
+        $stmt = $this->pdo->prepare("
+            SELECT c.*, COUNT(ac.article_id) as article_count
+            FROM categories c
+            JOIN article_category ac ON c.id = ac.category_id
+            GROUP BY c.id
+            ORDER BY article_count DESC, c.name ASC
+            LIMIT :limit
+        ");
+        
+        $stmt->bindValue('limit', $limit, PDO::PARAM_INT);
+        $stmt->execute();
+        
+        $categories = [];
+        while ($row = $stmt->fetch()) {
+            $categories[] = $this->mapToEntity($row);
+        }
+        
+        return $categories;
+    }
+
     private function mapToEntity(array $row): Category
     {
         return new Category(

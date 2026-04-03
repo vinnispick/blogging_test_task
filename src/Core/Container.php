@@ -86,7 +86,10 @@ class Container
 
         // 5. Presentation Layer (Responders)
         $this->set(\App\Presentation\Web\Responder\ResponderInterface::class, function (Container $c) {
-            return new \App\Presentation\Web\Responder\HtmlResponder($c->get(Smarty::class));
+            return new \App\Presentation\Web\Responder\HtmlResponder(
+                $c->get(Smarty::class),
+                $c->get(\App\Domain\Repository\CategoryRepositoryInterface::class)
+            );
         });
 
         // 6. Presentation Layer (Actions)
