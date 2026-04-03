@@ -48,8 +48,8 @@ setup:
 
 # Docker Orchestration
 docker-build:
-        @echo "Building Docker images..."
-        @docker compose build
+	@echo "Building Docker images..."
+	@docker compose build
 
 docker-up:
 	@echo "Starting Docker containers..."
