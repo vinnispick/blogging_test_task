@@ -49,10 +49,12 @@ setup:
 # Docker Orchestration
 docker-build:
 	@echo "Building Docker images..."
+	@if [ ! -f .env ]; then cp .env.example .env; fi
 	@docker compose build
 
 docker-up:
 	@echo "Starting Docker containers..."
+	@if [ ! -f .env ]; then cp .env.example .env; fi
 	@docker compose up -d
 
 docker-down:
