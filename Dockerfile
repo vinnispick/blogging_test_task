@@ -26,7 +26,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 
 # Copy composer files for caching
-COPY composer.json composer.lock ./
+COPY composer.json composer.lock* ./
 
 # Install dependencies without scripts/autoloader for cache optimization
 RUN composer install --no-dev --no-scripts --no-autoloader

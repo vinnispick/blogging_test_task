@@ -47,6 +47,10 @@ setup:
 	@echo "Setup complete. Run 'make serve' to start."
 
 # Docker Orchestration
+docker-build:
+        @echo "Building Docker images..."
+        @docker compose build
+
 docker-up:
 	@echo "Starting Docker containers..."
 	@docker compose up -d
