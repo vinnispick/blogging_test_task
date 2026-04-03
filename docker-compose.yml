@@ -9,8 +9,13 @@ services:
       - "8080:80"
     environment:
       - DB_HOST=db
+      - DB_PORT=3306
+      - DB_NAME=blog_db
+      - DB_USER=root
+      - DB_PASSWORD=root
     volumes:
       - .:/var/www/html
+      - /var/www/html/vendor
     depends_on:
       - db
     networks:
