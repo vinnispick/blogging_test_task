@@ -43,9 +43,9 @@ COPY . /var/www/html
 RUN composer dump-autoload --optimize --no-dev \
     && cp .env.example .env
 
-# Correct permissions for Smarty and entrypoint
-RUN mkdir -p templates_c cache \
-    && chmod -R 777 templates_c cache \
+# Correct permissions for Smarty, logs, and entrypoint
+RUN mkdir -p templates_c cache logs \
+    && chmod -R 777 templates_c cache logs \
     && chmod +x bin/docker-entrypoint.sh
 
 EXPOSE 80

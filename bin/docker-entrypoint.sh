@@ -1,6 +1,14 @@
 #!/bin/bash
 set -e
 
+# --- Runtime Directory Preparation ---
+# Ensure essential directories exist and are writable by the web server (www-data)
+# even when host volumes are mounted.
+echo "Preparing essential directories..."
+mkdir -p logs templates_c cache
+chmod -R 777 logs templates_c cache
+chown -R www-data:www-data logs templates_c cache
+
 # Wait for MySQL to be ready
 echo "Waiting for database to be ready..."
 php -r '
